@@ -6,7 +6,7 @@
 </head>
 <body id="main">
     <div class="start_msg">インディアンポーカー</div>
-    <div class="description_msg">ルール：トランプの数字が一番強いプレイヤーが勝ちとなる。</div>
+    <div class="description_msg">ルール：トランプの数字が一番強いプレイヤーが勝ちとなる。<br>終了時に自身が引いたトランプの数の合計で順位が決まる。</div>
     <ul>
         <li><img class="img_head" src="trumpCard/clover.png"></li>
         <li><img class="img_head" src="trumpCard/heart.png"></li>
@@ -21,6 +21,11 @@
                     <div class="btn_char">再戦</div>
                 </button>
             </li>
+            <li>
+                <button v-on:click="end">
+                    <div class="btn_char">終了</div>
+                </button>
+            </li>
         </ul>
     </div>
     <div v-if="result_lose" class="start_msg">
@@ -31,19 +36,39 @@
                     <div class="btn_char">再戦</div>
                 </button>
             </li>
+            <li>
+                <button v-on:click="end">
+                    <div class="btn_char">終了</div>
+                </button>
+            </li>
         </ul>
     </div>
+    <div v-if="score_result" class="start_msg">
+        <p>
+            1位 {{first}}<br>
+            2位 {{second}}<br>
+            3位 {{third}}<br>
+            4位 {{fourth}}
+        </p>
+        <li>
+            <button v-on:click="restart">
+                <div class="btn_char">再戦</div>
+            </button>
+        </li>
+    </div>
     <div>
-        <ul>
-            <span></span>
-            <li class="user_font">ユーザー</li>
-            <span></span>
-        </ul>
-        <ul>
-            <span></span>
-            <li id="user"><img class="img_main" v-bind:src="user_card"></li>
-            <span></span>
-        </ul>
+        <div v-if="user_display">
+            <ul>
+                <span></span>
+                <li class="user_font">user</li>
+                <span></span>
+            </ul>
+            <ul>
+                <span></span>
+                <li id="user"><img class="img_main" v-bind:src="user_card"></li>
+                <span></span>
+            </ul>
+        </div>
         <ul>
             <li v-if='start_btn'>
                 <button v-on:click="start"  value='開始'>
@@ -61,19 +86,21 @@
                 </button>
             </li>
         </ul>
-        <ul>
-            <li class="cp_font">CP1</li>
-            <li class="cp_font">CP2</li>
-            <li class="cp_font">CP3</li>
-        </ul>
-        <ul id="cp">
-            <li id="cp1"><img class="img_main" v-bind:src="cp1_card"></li>
-            <li id="cp2"><img class="img_main" v-bind:src="cp2_card"></li>
-            <li id="cp3"><img class="img_main" v-bind:src="cp3_card"></li>
-        </ul>
+        <div v-if="cp_display">
+            <ul>
+                <li class="cp_font">CP1</li>
+                <li class="cp_font">CP2</li>
+                <li class="cp_font">CP3</li>
+            </ul>
+            <ul id="cp">
+                <li id="cp1"><img class="img_main" v-bind:src="cp1_card"></li>
+                <li id="cp2"><img class="img_main" v-bind:src="cp2_card"></li>
+                <li id="cp3"><img class="img_main" v-bind:src="cp3_card"></li>
+            </ul>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
-    <script src="index.js"></script>
+    <script src="indian_main.js"></script>
 </body>
 <style lang="css" module>
     @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
