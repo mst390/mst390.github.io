@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>インディアンポーカー</title>
+</head>
+<body id="main">
+    <div class="start_msg">インディアンポーカー</div>
+    <div class="description_msg">ルール：トランプの数字が一番強いプレイヤーが勝ちとなる。</div>
+    <ul>
+        <li><img class="img_head" src="trumpCard/clover.png"></li>
+        <li><img class="img_head" src="trumpCard/heart.png"></li>
+        <li><img class="img_head" src="trumpCard/spade.png"></li>
+        <li><img class="img_head" src="trumpCard/diamond.png"></li>
+    </ul>
+    <div v-if="result_win" class="start_msg">
+        WIN 勝利
+        <ul>
+            <li>
+                <button v-on:click="restart">
+                    <div class="btn_char">再戦</div>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div v-if="result_lose" class="start_msg">
+        LOSE 敗北
+        <ul>
+            <li>
+                <button v-on:click="restart">
+                    <div class="btn_char">再戦</div>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <span></span>
+            <li class="user_font">ユーザー</li>
+            <span></span>
+        </ul>
+        <ul>
+            <span></span>
+            <li id="user"><img class="img_main" v-bind:src="user_card"></li>
+            <span></span>
+        </ul>
+        <ul>
+            <li v-if='start_btn'>
+                <button v-on:click="start"  value='開始'>
+                    <div class="btn_char">開始</div>
+                </button>
+            </li>
+            <li v-if='fight_btn'>
+                <button  v-on:click="fight">
+                    <div class="btn_char">勝負</div>
+                </button>
+            </li>
+            <li v-if='change_btn'>
+                <button v-on:click="change_card">
+                    <div class="btn_char">カード変更</div>
+                </button>
+            </li>
+        </ul>
+        <ul>
+            <li class="cp_font">CP1</li>
+            <li class="cp_font">CP2</li>
+            <li class="cp_font">CP3</li>
+        </ul>
+        <ul id="cp">
+            <li id="cp1"><img class="img_main" v-bind:src="cp1_card"></li>
+            <li id="cp2"><img class="img_main" v-bind:src="cp2_card"></li>
+            <li id="cp3"><img class="img_main" v-bind:src="cp3_card"></li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+    <script src="js/indian_main.js"></script>
+</body>
+<style lang="css" module>
+    @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+    
+     body{
+        background-color:rgb(3, 109, 29);
+     }
+    
+     ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+    
+     li{
+        list-style: none;
+     }
+    
+     span{
+        width:150px;
+     }
+    
+     button{
+        display: block;
+        margin: auto;
+        width: 120px;
+        height: 70px;
+        background: gold;
+        border-radius:30px;/*角の半径（丸くしている） */
+     }
+    
+     .img_head{
+        width:70px;
+        height:85px;
+     }
+     .img_main{
+        width: 150px;
+        height: 180px;
+     }
+    
+     .start_msg{
+        text-align: center;
+        font-size: xx-large;
+        color: cornsilk;
+        font-family: 'DotGothic16';
+     }
+    
+     .btn_char{
+        text-align: center;
+        color:coral;
+        font-size:large;
+        font-family: 'DotGothic16';
+     }
+    
+     .cp_font{
+        width:150px;
+        font-size:large;
+        font-family:'DotGothic16';
+        color:azure;
+     }
+     
+     .user_font{
+        width:150px;
+        font-size:large;
+        font-family:'DotGothic16';
+        color:fuchsia;
+     }
+     .start_msg{
+        text-align: center;
+        font-size: xx-large;
+        color: cornsilk;
+        font-family: 'DotGothic16';
+     }
+     .description_msg{
+        text-align: center;
+        font-size:medium;
+        color: cornsilk;
+        font-family: 'DotGothic16';
+     }
+     
+</style>
+</html>
