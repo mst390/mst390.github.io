@@ -149,10 +149,8 @@ Vue.createApp({
             if(p1Key > p2Key){ return 1; }
             return 0;
             })
-            this.scoreResult = Object.fromEntries(pairs);
-
-            console.log(pairs);
-            console.log(this.scoreResult)
+            this.scoreResult = {};
+            
             //順位ごとに名前とポイント数を入れる
             this.first = pairs[3][0] +':'+ pairs[3][1] + 'pt';
             this.second = pairs[2][0] +':'+ pairs[2][1] + 'pt'; 
